@@ -65,7 +65,7 @@
                         <div class="form-group row">
                             <label for="captcha" class="col-md-4 col-form-label text-md-right">验证码</label>
                             <div class="col-md-6">
-                                <input id="captcha" class="form-control{{ $errors->has('captcha') ? ' is-invalid' : '' }}" />
+                                <input id="captcha" class="form-control{{ $errors->has('captcha') ? ' is-invalid' : '' }}" name="captcha"/>
                                 <img class="thumbnail captcha mt-3 mb-2" src="{{ captcha_src('flat') }}" onclick="this.src=this.src">
                                 @if ($errors->has('captcha'))
                                     <span class="invalid-feedback" role="alert">
