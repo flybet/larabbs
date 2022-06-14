@@ -17,8 +17,8 @@
             <div class="card">
                 <div class="car-header bg-transparent">
                     <ul class="nav nav-pills">
-                        <li class="nav-item"><a href="#" class="nav-link active">最后回复</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">最新发布</a></li>
+                        <li class="nav-item"><a href="{{Request::url()}}" class="nav-link {{ active_class( ! if_query('order', 'recent')) }}">最后回复</a></li>
+                        <li class="nav-item"><a href="{{Request::url()}}" class="nav-link  {{ active_class(if_query('order', 'recent')) }}">最新发布</a></li>
                     </ul>
                 </div>
                 <div class="card-body">
@@ -27,6 +27,7 @@
                     {{--分页--}}
                     <div class="mt-5">
                         {!! $topics->appends($filter)->render() !!}
+{{--                        {!! $topics->render() !!}--}}
                     </div>
                 </div>
             </div>
