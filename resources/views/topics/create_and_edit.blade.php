@@ -11,7 +11,8 @@
 
                 <div class="card-body">
 
-                    <h2 class=""><i class="far fa-edit"></i>
+                    <h2 class="">
+                        <i class="far fa-edit"></i>
                         @if($topic->id)
                             编辑话题
                         @else
@@ -48,7 +49,7 @@
 
                                     <div class="form-group">
                                         <label for="body-field">Body</label>
-                                        <textarea name="body" id="editor" class="form-control"
+                                        <textarea name="body" id="editor" class="form-control simditor-body"
                                                   placeholder="请填入至少三个字符的内容"
                                                   rows="6">{{ old('body', $topic->body ) }}</textarea>
                                     </div>
