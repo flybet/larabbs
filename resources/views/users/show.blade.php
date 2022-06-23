@@ -34,7 +34,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{active_class(if_query('tab','replies'))}}"
-                               href="{{route('users.show',['tab'=>'replies'])}}?tab=replies">Ta 的回复</a>
+                               href="{{route('users.show',['tab'=>'replies'])}}">Ta 的回复</a>
                         </li>
                     </ul>
                     @if(if_query('tab','replies'))
