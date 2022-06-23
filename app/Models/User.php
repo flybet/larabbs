@@ -12,20 +12,17 @@ use Auth;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
-    use Notifiable
-    {
+    use Notifiable {
         notify as protected laravelNotify;
     }
 
     public function notify($instance)
     {
-        if($this->id == Auth::id())
-        {
+        if ($this->id == Auth::id()) {
             return;
         }
 
-        if(method_exists($instance,'toDatabase'))
-        {
+        if (method_exists($instance, 'toDatabase')) {
             $this->increment('notification_count');
         }
 
@@ -74,5 +71,12 @@ class User extends Authenticatable implements MustVerifyEmailContract
     public function replies()
     {
         return $this->hasMany(Reply::class);
+    }
+
+    public function markAsRead()
+    {
+        $this->notification_count = 0;
+        $this->save();
+        $this->unreadNotifications->markAsRead();
     }
 }
