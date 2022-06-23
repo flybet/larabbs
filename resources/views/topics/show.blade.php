@@ -36,11 +36,13 @@
                         {{ $topic->title }}
                     </h1>
                     <div class="article-meta text-center text-secondary">
-                        {{ $topic->created_at->diffForHumans() }} ⋅<i
-                                class="far fa-comment"></i> {{ $topic->reply_count }}
+                        {{ $topic->created_at->diffForHumans() }} ⋅
+                        <i class="far fa-comment"></i>
+                        {{ $topic->reply_count }}
                     </div>
 
-                    <div class="topic-body mt-4 mb-4"> {!! $topic->body !!}
+                    <div class="topic-body mt-4 mb-4">
+                        {!! $topic->body !!}
                     </div>
                     @can('update',$topic)
                         <div class="operate">
@@ -59,6 +61,15 @@
 
                 </div>
             </div>
+
+            <div class="card topic-reply mt-4">
+                <div class="card-body">
+                    @include('topics._reply_box',['topic'=>$topic])
+{{--                    @include('topics._reply_list',['replies'=>$topic->replies()->with('user')->get()])--}}
+                    @include('topics._reply_list',['replies'=>$topic->replies()->with('user')->get()])
+                </div>
+            </div>
+
         </div>
     </div>
 
