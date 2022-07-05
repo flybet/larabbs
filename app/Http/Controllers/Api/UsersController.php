@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
 use App\Models\User;
+use App\Http\Requests\UserRequest;
 
 class UsersController extends Controller
 {
