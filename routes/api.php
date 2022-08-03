@@ -23,16 +23,16 @@ $api->version('v1', [
     $api->group([
         'middleware' => 'api.throttle',
         'limit' => config('api.rate_limits.sign.limit'),
-        'expires' =>  config('api.rate_limits.sign.expires'),
+        'expires' => config('api.rate_limits.sign.expires'),
     ], function ($api) {
         $api->post('verificationCodes', 'VerificationCodesController@store')
             ->name('api.verificationCode.store');
         // 用户注册
         $api->post('users', 'UsersController@store')->name('api.users.store');
 
-        $api->post('captchas','CaptchasController@store')->name('api.captchas.store');
+        $api->post('captchas', 'CaptchasController@store')->name('api.captchas.store');
 
-        $api->post('socials/{social_type}/authorizations','AuthorizationsController@store')->name('api.socials.authorizations.store');
+        $api->post('socials/{social_type}/authorizations', 'AuthorizationsController@store')->name('api.socials.authorizations.store');
         $api->post('authorizations', 'AuthorizationsController@store')->name('api.authorizations.store');
 
         // 刷新token
@@ -53,8 +53,12 @@ $api->version('v1', [
             $api->get('user', 'UsersController@me')
                 ->name('api.user.show');
 
+            // 图片资源
+            $api->post('images', 'ImagesController@store')->name('api.images.store');
+
 
         });
     });
+
 
 });
